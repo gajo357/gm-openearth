@@ -13,6 +13,14 @@ import {
   signInWithEmailAndPassword,
   User as FbUser
 } from "firebase/auth";
+import {
+  doc,
+  getDoc,
+  initializeFirestore,
+  setDoc,
+  DocumentData,
+  WithFieldValue
+} from "firebase/firestore";
 import { Roles } from "../models/UserDto";
 
 // Your web app's Firebase configuration
@@ -28,6 +36,19 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const firebaseAuth = getAuth(app);
+// fix for error: @firebase/firestore: Firestore (8.2.5): Connection WebChannel transport errored...
+const firestore = initializeFirestore(app, {
+  experimentalForceLongPolling: true
+});
+
+const getFirestoreDoc = (collection: string, id: string) =>
+  getDoc(doc(firestore, collection, id));
+
+const setFirestoreDoc = (
+  collection: string,
+  id: string,
+  data: WithFieldValue<DocumentData>
+) => setDoc(doc(firestore, collection, id), data);
 
 interface ContextProps {
   user: FbUser | undefined;
@@ -145,4 +166,10 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
   );
 };
 
-export { AuthProvider, AuthConsumer, useAuth };
+export {
+  AuthProvider,
+  AuthConsumer,
+  useAuth,
+  getFirestoreDoc,
+  setFirestoreDoc
+};
