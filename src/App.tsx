@@ -1,15 +1,27 @@
-import { useState } from "react";
+import { FC } from "react";
 import "./App.css";
-import ContentContainer from "./components/ContentContainer";
+import AppRoutes from "./components/AppRoutes";
+import LoginSpinner from "./components/LoginSpinner";
 import Sidebar from "./components/Sidebar";
+import { AuthConsumer, AuthProvider } from "./hooks/useAuth";
 
-function App() {
-  return (
-    <div className="flex">
-      <Sidebar />
-      <ContentContainer />
-    </div>
-  );
-}
+const App: FC = () => (
+  <AuthProvider>
+    <AuthConsumer>
+      {({ loadingAuthState, authenticated }) => (
+        <div className="flex">
+          {loadingAuthState ? (
+            <LoginSpinner />
+          ) : (
+            <>
+              {authenticated && <Sidebar />}
+              <AppRoutes />
+            </>
+          )}
+        </div>
+      )}
+    </AuthConsumer>
+  </AuthProvider>
+);
 
 export default App;
