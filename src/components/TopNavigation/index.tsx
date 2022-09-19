@@ -2,7 +2,7 @@ import React from "react";
 
 interface Props {
   title: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const TopNavigation: React.FC<Props> = ({ title, children }) => {

@@ -19,7 +19,9 @@ import {
   initializeFirestore,
   setDoc,
   DocumentData,
-  WithFieldValue
+  WithFieldValue,
+  AddPrefixToKeys,
+  runTransaction
 } from "firebase/firestore";
 import { Roles } from "../models/UserDto";
 
@@ -49,6 +51,18 @@ const setFirestoreDoc = (
   id: string,
   data: WithFieldValue<DocumentData>
 ) => setDoc(doc(firestore, collection, id), data);
+
+const updateFirestore = (
+  collection: string,
+  id: string,
+  data: {
+    [x: string]: any;
+  } & AddPrefixToKeys<string, any>
+) =>
+  runTransaction(firestore, transaction => {
+    transaction.update(doc(firestore, collection, id.toString()), data);
+    return Promise.resolve();
+  });
 
 interface ContextProps {
   user: FbUser | undefined;
@@ -171,5 +185,6 @@ export {
   AuthConsumer,
   useAuth,
   getFirestoreDoc,
-  setFirestoreDoc
+  setFirestoreDoc,
+  updateFirestore
 };

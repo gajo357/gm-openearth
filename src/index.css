@@ -28,7 +28,7 @@
   .sidebar-tooltip {
     @apply w-auto min-w-max
     text-xs font-bold 
-    invisible md:visible
+    hidden md:block
     pr-2;
   }
 
@@ -41,7 +41,9 @@
   .content-container {
     @apply flex flex-col 
     bg-gray-300 dark:bg-gray-700
-    m-0 
+    m-0
+    ml-8
+    md:ml-24
     h-full w-full 
     overflow-hidden;
   }
@@ -55,8 +57,90 @@
   }
 
   .title-text {
-    @apply text-xl text-gray-500 tracking-wider font-semibold text-opacity-80 
+    @apply text-xl text-gray-300 tracking-wider font-semibold text-opacity-80 
     my-auto 
     transition duration-300 ease-in-out;
+  }
+
+  .top-navigation-icon {
+    @apply ml-auto mr-4 text-gray-300;
+  }
+
+  .form {
+    @apply flex justify-center items-center flex-wrap mx-auto p-2;
+  }
+
+  .form-input {
+    @apply block w-full px-4 py-2 
+    text-xl font-normal text-gray-700 
+    bg-white bg-clip-padding border border-solid border-gray-300 rounded 
+    transition ease-in-out m-0 
+    focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none;
+  }
+
+  .submit-button {
+    @apply inline-block px-7 py-3 bg-gray-800 hover:bg-green-600 
+    text-green-500 hover:text-white font-medium text-sm leading-snug uppercase rounded shadow-md 
+    transition duration-150 ease-in-out;
+  }
+
+  .content-list {
+    @apply flex flex-col items-center 
+    h-full w-full 
+    mt-0 ml-0 mx-auto px-0 pb-12 
+    overflow-y-scroll;
+  }
+
+  .tree {
+    @apply w-full
+    flex flex-row items-center justify-evenly
+    py-4 px-8 m-0
+    cursor-pointer;
+  }
+
+  .tree-selected {
+    @apply bg-green-400 dark:bg-gray-900
+    shadow-md;
+  }
+
+  .tree-content {
+    @apply w-3/5 
+    flex flex-col justify-start 
+    ml-auto;
+  }
+
+  .tree-actions {
+    @apply w-1/5
+    text-white
+    flex flex-col justify-start 
+    ml-auto;
+  }
+
+  .tree-text {
+    @apply text-lg text-left text-gray-800 dark:text-white 
+    mr-auto whitespace-normal;
+  }
+
+  .tree-owner {
+    @apply text-left text-xl font-semibold text-gray-800 dark:text-white mr-2 cursor-pointer;
+  }
+
+  .avatar-wrapper {
+    @apply flex flex-col items-center
+    w-1/5 
+    m-0 ml-auto mb-auto;
+  }
+
+  .avatar {
+    @apply flex-none
+    w-12 h-full 
+    rounded-full shadow-md
+    object-cover bg-gray-100 
+    mb-auto mt-0 mx-0 
+    cursor-pointer;
+  }
+
+  .timestamp {
+    @apply text-xs text-left font-semibold text-gray-500 dark:text-gray-600 ml-2;
   }
 }

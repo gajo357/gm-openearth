@@ -9,13 +9,15 @@ const App: FC = () => (
   <AuthProvider>
     <AuthConsumer>
       {({ loadingAuthState, authenticated }) => (
-        <div className="flex">
+        <div>
           {loadingAuthState ? (
             <LoginSpinner />
           ) : (
             <>
               {authenticated && <Sidebar />}
-              <AppRoutes />
+              <div className="flex">
+                <AppRoutes />
+              </div>
             </>
           )}
         </div>
