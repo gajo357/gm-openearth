@@ -9,7 +9,7 @@ const App: FC = () => (
   <AuthProvider>
     <AuthConsumer>
       {({ loadingAuthState, authenticated }) => (
-        <div>
+        <>
           {loadingAuthState ? (
             <LoginSpinner />
           ) : (
@@ -20,7 +20,7 @@ const App: FC = () => (
               </div>
             </>
           )}
-        </div>
+        </>
       )}
     </AuthConsumer>
   </AuthProvider>

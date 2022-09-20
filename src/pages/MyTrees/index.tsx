@@ -63,7 +63,7 @@ const MyTrees: React.FC = () => {
 
   return (
     <div className="content-container">
-      <TopNavigation title="Account">
+      <TopNavigation title="My trees">
         <Link to="new-tree">
           <MdLibraryAdd size="24" className="top-navigation-icon" />
         </Link>

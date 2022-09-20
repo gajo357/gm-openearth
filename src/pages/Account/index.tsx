@@ -73,9 +73,7 @@ const Account: React.FC = () => {
           <div className="text-center">
             <button
               type="submit"
-              className="inline-block px-7 py-3 bg-gray-800 hover:bg-green-600 
-            text-green-500 hover:text-white font-medium text-sm leading-snug uppercase rounded shadow-md 
-            transition duration-150 ease-in-out"
+              className="primary-button inline-block px-7 py-3 font-medium text-sm leading-snug uppercase"
             >
               Save
             </button>

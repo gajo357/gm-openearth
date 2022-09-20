@@ -10,14 +10,24 @@
 }
 
 @layer components {
-  .sidebar-item {
-    @apply relative flex items-center justify-center 
-    mt-2 mb-2  
-  bg-gray-400 hover:bg-green-600 dark:bg-gray-800
-  text-green-500 hover:text-white
+  .primary-button {
+    @apply bg-green-400 hover:bg-green-600 text-white
     hover:rounded-xl rounded-3xl
     transition-all duration-300 ease-linear
     cursor-pointer shadow-lg;
+  }
+
+  .sidebar {
+    @apply fixed top-0 left-0 
+    h-screen w-16 
+    flex flex-col md:w-32 
+    bg-white shadow-lg;
+  }
+
+  .sidebar-item {
+    @apply relative flex items-center justify-center 
+    mt-2 mb-2  
+    primary-button;
   }
 
   .sidebar-icon {
@@ -33,14 +43,14 @@
   }
 
   .sidebar-hr {
-    @apply bg-gray-200 dark:bg-gray-800 
-    border border-gray-200 dark:border-gray-800 rounded-full
+    @apply bg-green-200 
+    border border-gray-200 rounded-full
     mx-2;
   }
 
   .content-container {
     @apply flex flex-col 
-    bg-gray-300 dark:bg-gray-700
+    bg-green-300
     m-0
     ml-8
     md:ml-24
@@ -50,20 +60,20 @@
 
   .top-navigation {
     @apply flex flex-row items-center justify-evenly 
-    bg-gray-300 dark:bg-gray-700 bg-opacity-90 
+    bg-green-300 bg-opacity-90 
     w-full h-16 
     m-0 
     shadow-lg;
   }
 
   .title-text {
-    @apply text-xl text-gray-300 tracking-wider font-semibold text-opacity-80 
+    @apply text-xl text-black tracking-wider font-semibold text-opacity-80 
     my-auto 
     transition duration-300 ease-in-out;
   }
 
   .top-navigation-icon {
-    @apply ml-auto mr-4 text-gray-300;
+    @apply ml-auto mr-4 text-white;
   }
 
   .form {
@@ -79,9 +89,8 @@
   }
 
   .submit-button {
-    @apply inline-block px-7 py-3 bg-gray-800 hover:bg-green-600 
-    text-green-500 hover:text-white font-medium text-sm leading-snug uppercase rounded shadow-md 
-    transition duration-150 ease-in-out;
+    @apply inline-block px-7 py-3 
+    primary-button font-medium text-sm leading-snug uppercase;
   }
 
   .content-list {
@@ -98,7 +107,7 @@
   }
 
   .tree-selected {
-    @apply bg-green-400 dark:bg-gray-900
+    @apply bg-green-400
     shadow-md;
   }
 
@@ -116,12 +125,12 @@
   }
 
   .tree-text {
-    @apply text-lg text-left text-gray-800 dark:text-white 
+    @apply text-lg text-left text-gray-800
     mr-auto whitespace-normal;
   }
 
   .tree-owner {
-    @apply text-left text-xl font-semibold text-gray-800 dark:text-white mr-2;
+    @apply text-left text-xl font-semibold text-gray-800;
   }
 
   .tree-avatar-wrapper {
@@ -135,11 +144,11 @@
     @apply flex-none
     w-16 h-16 
     rounded-full shadow-md
-    object-cover bg-gray-100 
+    object-cover bg-green-100 
     mb-auto mt-0 mx-0;
   }
 
   .timestamp {
-    @apply text-xs text-left font-semibold text-gray-500 dark:text-gray-600 ml-2;
+    @apply text-xs text-left font-semibold text-gray-500 ml-2;
   }
 }
