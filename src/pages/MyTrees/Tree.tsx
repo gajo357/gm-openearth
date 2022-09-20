@@ -12,8 +12,8 @@ interface Props {
 const Tree: React.FC<Props> = ({ tree, img, onDelete }) => {
   return (
     <div className="tree">
-      <div className="avatar-wrapper">
-        <img src={img} alt="" className="avatar" />
+      <div className="tree-avatar-wrapper">
+        <img src={img} alt="" className="tree-avatar" />
       </div>
 
       <div className="tree-content">
@@ -29,8 +29,13 @@ const Tree: React.FC<Props> = ({ tree, img, onDelete }) => {
       </div>
 
       <div className="tree-actions">
-        <MdDeleteOutline className="text-red" size="28" onClick={onDelete} />
-        <Link to={`/edit-tree/${tree.id}`}>
+        <MdDeleteOutline
+          className="cursor-pointer"
+          style={{ color: "red" }}
+          size="28"
+          onClick={onDelete}
+        />
+        <Link to={`/edit-tree/${tree.id}`} className="cursor-pointer">
           <MdEdit size="28" />{" "}
         </Link>
       </div>

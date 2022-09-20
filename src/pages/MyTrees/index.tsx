@@ -13,22 +13,23 @@ const MyTrees: React.FC = () => {
   const [trees, setTrees] = useState<TreesDto>({ trees: [], lastUpdate: "" });
   const [treeImgs, setTreeImgs] = useState<string[]>([]);
 
+  const getMyTrees = () => {
+    return getFirestoreDoc("trees", user!.uid)
+      .then(async doc => {
+        if (!doc.exists()) {
+          await setFirestoreDoc("trees", user!.uid, trees);
+          return trees;
+        } else {
+          return doc.data() as TreesDto;
+        }
+      })
+      .then(data => {
+        setTrees(data);
+      });
+  };
+
   useEffect(() => {
-    const getTrees = () => {
-      return getFirestoreDoc("trees", user!.uid)
-        .then(async doc => {
-          if (!doc.exists()) {
-            await setFirestoreDoc("trees", user!.uid, trees);
-            return trees;
-          } else {
-            return doc.data() as TreesDto;
-          }
-        })
-        .then(data => {
-          setTrees(data);
-        });
-    };
-    getTrees();
+    getMyTrees();
   }, []);
 
   useEffect(() => {
@@ -50,6 +51,16 @@ const MyTrees: React.FC = () => {
     fetchImgs();
   }, []);
 
+  const onDelete = (id: string) => {
+    const newTrees = {
+      ...trees,
+      trees: trees.trees.filter(t => t.id !== id),
+      lastUpdate: new Date().toISOString()
+    };
+    setTrees(newTrees);
+    return setFirestoreDoc("trees", user!.uid, newTrees);
+  };
+
   return (
     <div className="content-container">
       <TopNavigation title="Account">
@@ -61,8 +72,9 @@ const MyTrees: React.FC = () => {
       <div className="content-list">
         {trees.trees.map(tree => (
           <Tree
+            key={tree.id}
             tree={tree}
-            onDelete={() => {}}
+            onDelete={() => onDelete(tree.id)}
             img={treeImgs[Math.round(Math.random() * treeImgs.length)]}
           />
         ))}

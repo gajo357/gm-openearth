@@ -94,8 +94,7 @@
   .tree {
     @apply w-full
     flex flex-row items-center justify-evenly
-    py-4 px-8 m-0
-    cursor-pointer;
+    py-4 px-8 m-0;
   }
 
   .tree-selected {
@@ -122,22 +121,22 @@
   }
 
   .tree-owner {
-    @apply text-left text-xl font-semibold text-gray-800 dark:text-white mr-2 cursor-pointer;
+    @apply text-left text-xl font-semibold text-gray-800 dark:text-white mr-2;
   }
 
-  .avatar-wrapper {
-    @apply flex flex-col items-center
+  .tree-avatar-wrapper {
+    @apply flex-col items-center
     w-1/5 
-    m-0 ml-auto mb-auto;
+    m-0 ml-auto mb-auto
+    hidden md:flex;
   }
 
-  .avatar {
+  .tree-avatar {
     @apply flex-none
-    w-12 h-full 
+    w-16 h-16 
     rounded-full shadow-md
     object-cover bg-gray-100 
-    mb-auto mt-0 mx-0 
-    cursor-pointer;
+    mb-auto mt-0 mx-0;
   }
 
   .timestamp {
