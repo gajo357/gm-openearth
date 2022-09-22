@@ -25,7 +25,7 @@ const NewTree: React.FC = () => {
 
       <TreeForm
         tree={{
-          id: new Date().getMilliseconds(),
+          id: new Date().getMilliseconds().toString(),
           species: "",
           year: 1950,
           trunkCircumference: 20,

@@ -4,7 +4,7 @@ import { Roles } from "../models/UserDto";
 import { useAuth } from "./useAuth";
 
 const withRoles =
-  <TProps,>(
+  <TProps extends JSX.IntrinsicAttributes>(
     WrappedComponent: React.ComponentType | React.FC<TProps>,
     roles: Roles[]
   ) =>

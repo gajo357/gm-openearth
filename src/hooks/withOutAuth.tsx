@@ -3,7 +3,9 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "./useAuth";
 
 const withOutAuth =
-  <TProps,>(WrappedComponent: React.ComponentType | React.FC<TProps>) =>
+  <TProps extends JSX.IntrinsicAttributes>(
+    WrappedComponent: React.ComponentType | React.FC<TProps>
+  ) =>
   (props: TProps) => {
     const { authenticated } = useAuth();
 
